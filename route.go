@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gitlab.com/thavorath/oas/openapi"
+	"github.com/thavorath/oas/openapi"
 	"strings"
 )
 
