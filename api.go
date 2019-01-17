@@ -7,7 +7,6 @@
 //@server: "https://api.nirandas.com/"
 package main
 
-
 //User object
 //@dto User
 type User struct {

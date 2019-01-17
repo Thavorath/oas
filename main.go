@@ -184,6 +184,8 @@ func setType(schema *openapi.Schema, e ast.Expr, cmt string) {
 		case *ast.SelectorExpr:
 			if fmt.Sprintf("%s.%s", d2.X, d2.Sel) == "time.Time" {
 				t = "Time"
+			} else {
+				t = d2.Sel.String()
 			}
 		}
 	}
@@ -197,9 +199,13 @@ func setType(schema *openapi.Schema, e ast.Expr, cmt string) {
 	switch t {
 	case "string":
 		s.Type = "string"
-	case "int", "int32", "int64":
+	case "int", "int32", "int64", "uint", "uint32", "uint64":
 		s.Type = "integer"
-		s.Format = t
+		if strings.HasPrefix(t, "u") {
+			s.Format = t[1:]
+		} else {
+			s.Format = t
+		}
 	case "float32":
 		s.Type = "number"
 		s.Format = "float"
