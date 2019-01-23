@@ -63,7 +63,7 @@ func (v *Visitor) AtRoute(route *RouteParam) {
 			for _, p := range d.Parameters {
 				prm := &openapi.Parameter{
 					Ref:      "#/components/parameters/" + p.Name,
-					Required: v.Doc.Components.Parameters[p.Name].Required,
+					
 				}
 				o.Parameters = append(o.Parameters, prm)
 			}
